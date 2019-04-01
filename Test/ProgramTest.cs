@@ -1,20 +1,33 @@
 using ClassEnum;
 using Xunit;
+using System;
 
 namespace Test
 {
     public class ProgramTest
     {
         [Fact]
-        public void Program_Donald()
+        public void Test_CourseType_Contains_WorldHistory()
         {
-            Assert.Equal("Duck", Program.GetFirstName(StudentType.Donald));
+            string[] enumNames = Enum.GetNames(typeof(CourseType));
+
+            Assert.Contains(enumNames, type => type == "WorldHistory");
         }
 
         [Fact]
-        public void Program_Mickey()
+        public void Test_CourseType_Contains_Geography()
         {
-            Assert.Equal("Mouse", Program.GetFirstName(StudentType.Mickey));
+            string[] enumNames = Enum.GetNames(typeof(CourseType));
+
+            Assert.Contains(enumNames, type => type == "Geography");
+        }
+
+        [Fact]
+        public void Test_CourseType_Contains_AtLeastEightSubjects()
+        {
+            string[] enumNames = Enum.GetNames(typeof(CourseType));
+
+            Assert.True(enumNames.Length > 7);
         }
     }
 }
